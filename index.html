@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="reversi-board.js"></script>
+    <style>
+        #root {
+            width: 90%;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script>
+    
+    let o = new ReversiBoard("root");
+    o.resize();
+    
+    window.onresize = function() {
+        o.resize();
+        let l = [
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 2, 3, 0, 0, 0],
+            [0, 0, 0, 3, 2, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0]
+        ];
+        o.update(l);
+    }
+</script>
+</html>
