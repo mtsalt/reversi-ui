@@ -85,7 +85,7 @@ class ReversiBoard {
         this.#boardStyle.resizeAllDot(d.sideLength, d.margin);
 
         let m = result.mesh;
-        this.#boardStyle.resizeAllMesh(m.sideLength);
+        this.#boardStyle.resizeAllMesh(m.sideLength, m.margin);
 
         let s = result.stone;
         this.#boardStyle.resizeAllStone(s.sideLength, s.margin);
@@ -378,8 +378,11 @@ class ReversiBoardAdjuster {
 
     calculateMesh(containerWidth) {
         let sideLength = containerWidth / 8;
+        let marginRate = 0.13;
+        let margin = sideLength * marginRate;
         return {
-            sideLength: String(sideLength) + "px"
+            sideLength: String(sideLength - margin*2) + "px",
+            margin: String(margin) + "px"
         };
     }
 
@@ -449,12 +452,13 @@ class ReversiBoardStyle {
         }
     }
 
-    resizeAllMesh(sideLength) {
+    resizeAllMesh(sideLength, margin) {
         let elems = document.getElementsByClassName(this.setting.classNameMesh);
         for (let i=0; i<elems.length; i++) {
             let e = elems[i];
             e.style.width = sideLength;
             e.style.height = sideLength;
+            e.style.margin = margin;
         }
     }
 
