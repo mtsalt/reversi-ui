@@ -63,7 +63,6 @@ class ReversiBoard {
             let e = cellElems[i];
             this.#boardStyle.setCellStyle(e, this.#settings.styleCellBorderColor, this.#settings.styleCellEmpty);
         }
-        
         let stoneElems = document.getElementsByClassName(this.#settings.classNameStone);
         for (let i=0; i<stoneElems.length; i++) {
             let e = stoneElems[i];
@@ -82,16 +81,12 @@ class ReversiBoard {
 
         let b = result.board;
         this.#boardStyle.resizeBoard(b.sideLength, b.borderWidth, b.borderRadius);
-
         let c = result.cell;
         this.#boardStyle.resizeAllCell(c.sideLength, c.borderWidth);
-
         let d = result.dot;
         this.#boardStyle.resizeAllDot(d.sideLength, d.margin);
-
         let m = result.mesh;
         this.#boardStyle.resizeAllMesh(m.sideLength, m.margin);
-
         let s = result.stone;
         this.#boardStyle.resizeAllStone(s.sideLength, s.margin);
     }
@@ -144,8 +139,6 @@ class ReversiBoard {
             styleCellAvailable: settings.styleCellAvailable || "darkgreen",
             styleCellBorderColor: settings.styleCellBorderColor || "black",
             styleDotColor: settings.styleDotColor || "black",
-            styleBoardColor: settings.styleBoardColor || "black",
-            styleBoardBorderColor: settings.styleBoardBorderColor || "black",
             
             // id and class name
             idReversiBoard: settings.idReversiBoard || "reversiboard",
@@ -190,6 +183,7 @@ class ReversiBoard {
 
 }
 
+
 class ReversiBoardDOM {
 
     constructor(settings) {
@@ -222,10 +216,8 @@ class ReversiBoardDOM {
     }
 
     #createBoardLayer() {
-
         let boardLayer = document.createElement("div");
         boardLayer.className = this.settings.classNameLayer;
-
         for (let i = 0; i < 8; i++) {
             let row = document.createElement("div");
             row.className = this.settings.classNameRow;
@@ -237,15 +229,12 @@ class ReversiBoardDOM {
             }
             boardLayer.appendChild(row);
         }
-
         return boardLayer;
     }
 
     #createDotLayer() {
-
         let dotLayer = document.createElement("div");
         dotLayer.className = this.settings.classNameLayer;
-
         for (let i = 0; i < 2; i++) {
             let row = document.createElement("div");
             row.className = this.settings.classNameRow;
@@ -256,15 +245,12 @@ class ReversiBoardDOM {
             }
             dotLayer.appendChild(row);
         }
-
         return dotLayer;
     }
 
     #createStoneLayer() {
-
         let stoneLayer = document.createElement("div");
         stoneLayer.className = this.settings.classNameLayer;
-
         for (let i = 0; i < 8; i++) {
             let row = document.createElement("div");
             row.className = this.settings.classNameRow;
@@ -276,15 +262,12 @@ class ReversiBoardDOM {
             }
             stoneLayer.appendChild(row);
         }
-
         return stoneLayer;
     }
 
     #createMeshLayer() {
-
         let meshLayer = document.createElement("div");
         meshLayer.className = this.settings.classNameLayer;
-
         for (let i = 0; i < 8; i++) {
             let row = document.createElement("div");
             row.className = this.settings.classNameRow;
@@ -296,7 +279,6 @@ class ReversiBoardDOM {
             }
             meshLayer.appendChild(row);
         }
-
         return meshLayer;
     }
 
@@ -326,6 +308,7 @@ class ReversiBoardDOM {
             y: parseInt(xy[1])
         };
     }
+    
 }
 
 
@@ -357,7 +340,6 @@ class ReversiBoardAdjuster {
         let cellSideLength = containerWidth / 8;
         return {
             sideLength: String(cellSideLength - 2) + "px",
-            // borderWidth: String(cellSideLength / 10000) + "px",
             borderWidth: "1px"
         };
     }
@@ -397,11 +379,11 @@ class ReversiBoardAdjuster {
 class ReversiBoardStyle {
 
     constructor(settings) {
-        this.setting = settings;
+        this.settings = settings;
     }
 
     resizeBoard(sideLength) {
-        let elem = document.getElementById(this.setting.idReversiBoard);
+        let elem = document.getElementById(this.settings.idReversiBoard);
         elem.style.width = sideLength;
         elem.style.height = sideLength;
     }
@@ -413,7 +395,7 @@ class ReversiBoardStyle {
     }
 
     resizeAllCell(sideLength, borderWidth) {
-        let elems = document.getElementsByClassName(this.setting.classNameCell);
+        let elems = document.getElementsByClassName(this.settings.classNameCell);
         for (let i=0; i<elems.length; i++) {
             let e = elems[i];
             e.style.width = sideLength;
@@ -423,7 +405,7 @@ class ReversiBoardStyle {
     }
 
     setAllDotStyle(backgroundColor) {
-        let elems = document.getElementsByClassName(this.setting.classNameDot);
+        let elems = document.getElementsByClassName(this.settings.classNameDot);
         for (let i=0; i<elems.length; i++) {
             let e = elems[i];
             e.style.backgroundColor = backgroundColor;
@@ -431,7 +413,7 @@ class ReversiBoardStyle {
     }
 
     resizeAllDot(sideLength, margin) {
-        let elems = document.getElementsByClassName(this.setting.classNameDot);
+        let elems = document.getElementsByClassName(this.settings.classNameDot);
         for (let i=0; i<elems.length; i++) {
             let e = elems[i];
             e.style.width = sideLength;
@@ -447,7 +429,7 @@ class ReversiBoardStyle {
     }
 
     resizeAllStone(sideLength, margin) {
-        let elems = document.getElementsByClassName(this.setting.classNameStone);
+        let elems = document.getElementsByClassName(this.settings.classNameStone);
         for (let i=0; i<elems.length; i++) {
             let e = elems[i];
             e.style.width = sideLength;
@@ -467,7 +449,7 @@ class ReversiBoardStyle {
     }
 
     resizeAllMesh(sideLength, margin) {
-        let elems = document.getElementsByClassName(this.setting.classNameMesh);
+        let elems = document.getElementsByClassName(this.settings.classNameMesh);
         for (let i=0; i<elems.length; i++) {
             let e = elems[i];
             e.style.width = sideLength;
@@ -477,7 +459,7 @@ class ReversiBoardStyle {
     }
 
     setAllRowStyle() {
-        let elems = document.getElementsByClassName(this.setting.classNameRow);
+        let elems = document.getElementsByClassName(this.settings.classNameRow);
         for (let i=0; i<elems.length; i++) {
             let e = elems[i];
             e.style.display = "flex";
@@ -485,7 +467,7 @@ class ReversiBoardStyle {
     }
 
     setAllLayerStyle() {
-        let elems = document.getElementsByClassName(this.setting.classNameLayer);
+        let elems = document.getElementsByClassName(this.settings.classNameLayer);
         for (let i=0; i<elems.length; i++) {
             let e = elems[i];
             e.style.position = "absolute";
