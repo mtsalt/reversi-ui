@@ -26,22 +26,27 @@ class ReversiBoard {
                 let state = nextState[i][j];
                 let stoneElem = document.getElementById(ReversiBoardDOM.createId(this.#settings.classNameStone, i, j));
                 let cellElem = document.getElementById(ReversiBoardDOM.createId(this.#settings.classNameCell, i, j));
+                let meshElem = document.getElementById(ReversiBoardDOM.createId(this.#settings.classNameMesh, i, j));
                 switch (state) {
                     case this.#settings.stateStoneWhite:
                         this.#boardStyle.setStoneStyle(stoneElem, this.#settings.styleStoneWhite, this.#settings.styleStoneWhiteBorderColor);
                         this.#boardStyle.setCellStyle(cellElem, this.#settings.styleCellBorderColor, this.#settings.styleCellEmpty);
+                        this.#boardStyle.setMeshStyle(meshElem, false);
                         break;
                     case this.#settings.stateStoneBlack:
                         this.#boardStyle.setStoneStyle(stoneElem, this.#settings.styleStoneBlack, this.#settings.styleStoneBlackBorderColor);
                         this.#boardStyle.setCellStyle(cellElem, this.#settings.styleCellBorderColor, this.#settings.styleCellEmpty);
+                        this.#boardStyle.setMeshStyle(meshElem, false);
                         break;
                     case this.#settings.stateCellEmpty:
                         this.#boardStyle.setStoneStyle(stoneElem, this.#settings.styleTransparent, this.#settings.styleTransparent);
                         this.#boardStyle.setCellStyle(cellElem, this.#settings.styleCellBorderColor, this.#settings.styleCellEmpty);
+                        this.#boardStyle.setMeshStyle(meshElem, false);
                         break;
                     case this.#settings.stateCellAvailable:
                         this.#boardStyle.setStoneStyle(stoneElem, this.#settings.styleTransparent, this.#settings.styleTransparent);
                         this.#boardStyle.setCellStyle(cellElem, this.#settings.styleCellBorderColor, this.#settings.styleCellAvailable);
+                        this.#boardStyle.setMeshStyle(meshElem, true);
                         break;
                 }
             }
@@ -136,7 +141,7 @@ class ReversiBoard {
             styleStoneWhiteBorderColor: settings.styleStoneWhiteBorderColor || "white",
             styleStoneBlackBorderColor: settings.styleStoneBlackBorderColor || "black",
             styleCellEmpty: settings.styleCellEmpty || "green",
-            styleCellAvailable: settings.styleCellAvailable || "greenyellow",
+            styleCellAvailable: settings.styleCellAvailable || "darkgreen",
             styleCellBorderColor: settings.styleCellBorderColor || "black",
             styleDotColor: settings.styleDotColor || "black",
             styleBoardColor: settings.styleBoardColor || "black",
@@ -449,6 +454,15 @@ class ReversiBoardStyle {
             e.style.height = sideLength;
             e.style.margin = margin;
             e.style.borderRadius = "50%";
+        }
+    }
+
+    setMeshStyle(element, cursorHover) {
+        if (cursorHover) {
+            element.style.cursor = "pointer";
+        }
+        else {
+            element.style.cursor = "auto";
         }
     }
 
