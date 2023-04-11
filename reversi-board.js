@@ -99,7 +99,6 @@ class ReversiBoard {
 
     #initStyle() {
         this.#boardStyle = new ReversiBoardStyle(this.#settings);
-        this.#boardStyle.setBoardStyle(this.#settings.styleBoardColor, this.#settings.styleBoardBorderColor);
         let cellElems = document.getElementsByClassName(this.#settings.classNameCell);
         for (let i=0; i<cellElems.length; i++) {
             let e = cellElems[i];
@@ -392,22 +391,10 @@ class ReversiBoardStyle {
         this.setting = settings;
     }
 
-    setBoardStyle(backgroundColor, borderColor) {
-        let elem = document.getElementById(this.setting.idReversiBoard);
-        elem.style.backgroundColor = backgroundColor;
-        elem.style.borderColor = borderColor;
-        elem.style.borderStyle = "solid";
-        elem.style.borderWidth = "0.1px";
-    }
-
-    resizeBoard(sideLength, padding, borderWidth, borderRadius) {
+    resizeBoard(sideLength) {
         let elem = document.getElementById(this.setting.idReversiBoard);
         elem.style.width = sideLength;
         elem.style.height = sideLength;
-        elem.style.position = "relative";
-        elem.style.padding = padding;
-        elem.style.borderWidth = borderWidth;
-        elem.style.borderRadius = borderRadius;
     }
 
     setCellStyle(element, borderColor, backgroundColor) {
