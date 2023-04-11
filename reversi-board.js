@@ -13,6 +13,7 @@ class ReversiBoard {
         this.#initStyle();
         this.#initAdjuster();
         this.#initClickEvent();
+        this.resize();
     }
 
     /**
