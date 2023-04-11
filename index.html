@@ -1,38 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="reversi-board.js"></script>
+    <title>Reversi Board Sample</title>
     <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
         #root {
             width: 90%;
+            margin: 5%;
         }
     </style>
+    <script src="reversi-board.js"></script>
 </head>
 <body>
     <div id="root"></div>
 </body>
 <script>
-    
+    // create ReversiBoard instance
     let o = new ReversiBoard("root");
-    o.resize();
+
+    // board state array sample
+    let l = [
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 1, 0, 0, 0],
+        [0, 0, 0, 3, 2, 1, 0, 0],
+        [0, 0, 1, 2, 3, 0, 0, 0],
+        [0, 0, 0, 1, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0]
+    ];
     
+    // update board
+    o.update(l);
+
+    // set resize event
     window.onresize = function() {
         o.resize();
-        let l = [
-            [0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 2, 3, 0, 0, 0],
-            [0, 0, 0, 3, 2, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0]
-        ];
-        o.update(l);
     }
 </script>
 </html>
