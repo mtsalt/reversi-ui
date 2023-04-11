@@ -48,6 +48,12 @@ class ReversiBoard {
                         this.#boardStyle.setCellStyle(cellElem, this.#settings.styleCellBorderColor, this.#settings.styleCellAvailable);
                         this.#boardStyle.setMeshStyle(meshElem, true);
                         break;
+                    default:
+                        // same as empty state
+                        this.#boardStyle.setStoneStyle(stoneElem, this.#settings.styleTransparent, this.#settings.styleTransparent);
+                        this.#boardStyle.setCellStyle(cellElem, this.#settings.styleCellBorderColor, this.#settings.styleCellEmpty);
+                        this.#boardStyle.setMeshStyle(meshElem, false);
+                        break;
                 }
             }
         }
@@ -308,7 +314,7 @@ class ReversiBoardDOM {
             y: parseInt(xy[1])
         };
     }
-    
+
 }
 
 
