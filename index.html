@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <title>Reversi Board Sample</title>
     <style>
         html, body {
             margin: 0;
             padding: 0;
         }
         #root {
-            width: 90%;
-            margin: 5%;
+            width: 50%;
+            margin: 50px 25%;
         }
     </style>
     <script src="reversi-board.js"></script>
@@ -21,8 +20,8 @@
     // create ReversiBoard instance
     let o = new ReversiBoard("root");
 
-    // board state array sample
-    let l = [
+    // board state sample
+    let state = [
         [0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 1, 0, 0, 0],
@@ -34,7 +33,7 @@
     ];
     
     // update board
-    o.update(l);
+    o.update(state);
 
     // set resize event
     window.onresize = function() {
