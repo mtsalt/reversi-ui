@@ -7,13 +7,60 @@ Reversi UI written in JavaScript.
 - Update/Reset UI state
 
 ## How to use
+1. create HTML file & add container element
 
+    ``` HTML
+    <html>
+    <head>
+        <!-- write script tag later -->
+    </head>
+    <body>
+        <div id="container-id"></div> <!-- any id name -->
+    </body>
+    </html>
+    ```
+
+1. Read JavaScript file (write script tag)
+
+    ``` HTML
+    <script src="reversi-board.js"></script>
+    ```
+
+1. New/Update/Reset/Resize board
+
+    ``` JavaScript
+    // new ReversiBoard instance
+    let reverbiBoard = new ReversiBoard("container-id");
+
+    // update board state
+    let state = [
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 1, 0, 0, 0, 0],
+        [0, 0, 1, 2, 3, 0, 0, 0],
+        [0, 0, 0, 3, 2, 1, 0, 0],
+        [0, 0, 0, 0, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0]
+    ];
+    reversiBoard.update(state);
+
+    // reset board
+    reverbiBoard.reset();
+
+    // resize board
+    reverbiBoard.resize();
+    ```
+
+## Example
+Clone this repository and open example.html with your browser.
 
 ## Methods
 - ReversiBoard class
     | Name | Description | Argument |
     | --- | --- | --- |
-    | update | update board state with array | 8x8 int array|
+    | constructor | - | board container id (String), [configurations](#Board-configurations) (Object) |
+    | update | update board state with array | 8x8 int Array |
     | reset | reset board state (no stones, only empty board) | no argument |
     | resize | resize board (board size follows container element width) | no argument |
 
@@ -27,18 +74,18 @@ let config = {
     styleStoneBlack: "Red",
 }
 
-// create ReversiBoard instance
-let reverbiBoard = new ReversiBoard("root", config);
+// new ReversiBoard instance
+let reverbiBoard = new ReversiBoard("container-id", config);
 ```
 
 ### Board configurations
 - State
     | key | description |type | default value |
     | --- | --- | --- | --- |
-    | stateCellEmpty | | Number | 0 |
-    | stateCellAvailable | | Number | 1 |
-    | stateStoneWhite | | Number | 2 |
-    | stateStoneBlack | | Number | 3 |
+    | stateCellEmpty | empty cell state | Number | 0 |
+    | stateCellAvailable | available cell state | Number | 1 |
+    | stateStoneWhite | white stone state | Number | 2 |
+    | stateStoneBlack | black stone state | Number | 3 |
 
 - Style
     | key | description |type | default value |
