@@ -132,8 +132,7 @@ class ReversiBoard {
             stateCellAvailable: settings.stateCellAvailable || 1,
             stateStoneWhite: settings.styleStoneWhite || 2,
             stateStoneBlack: settings.styleStoneBlack || 3,
-            stateBoardEmpty: settings.stateBoardEmpty || this.#generateEmptyBoard(
-                settings.stateCellEmpty || 0),
+            stateBoardEmpty: this.#generateEmptyBoard(settings.stateCellEmpty || 0),
             
             // style
             styleTransparent: "transparent",
