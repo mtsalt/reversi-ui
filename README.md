@@ -6,7 +6,7 @@ Reversi UI written in JavaScript.
 - Customize style
 - Update/Reset UI state
 
-## How to use
+## Usage
 1. create HTML file & add container element
 
     ``` HTML
@@ -48,12 +48,11 @@ Reversi UI written in JavaScript.
     // reset board
     reverbiBoard.reset();
 
-    // resize board
-    reverbiBoard.resize();
+    // set resize event
+    window.onresize = function() {
+        reverbiBoard.resize();
+    }
     ```
-
-## Example
-Clone this repository and open example.html with your browser.
 
 ## Methods
 - ReversiBoard class
@@ -64,7 +63,11 @@ Clone this repository and open example.html with your browser.
     | reset | reset board state (no stones, only empty board) | no argument |
     | resize | resize board (board size follows container element width) | no argument |
 
-## Customize board
+## Structure
+- Board
+    Reversi board has layers 
+    
+## Customize
 You can customize reversi UI when creating a ReversiBoard instance.
 
 ``` JavaScript
@@ -78,9 +81,9 @@ let config = {
 let reverbiBoard = new ReversiBoard("container-id", config);
 ```
 
-### Board configurations
+### ReversiBoard class configurations
 - State
-    | key | description |type | default value |
+    | Key | Description | Type | Default value |
     | --- | --- | --- | --- |
     | stateCellEmpty | empty cell state | Number | 0 |
     | stateCellAvailable | available cell state | Number | 1 |
@@ -88,7 +91,7 @@ let reverbiBoard = new ReversiBoard("container-id", config);
     | stateStoneBlack | black stone state | Number | 3 |
 
 - Style
-    | key | description |type | default value |
+    | Key | Description | Type | Default value |
     | --- | --- | --- | --- |
     | styleStoneWhite | white stone color. | String | "white" |
     | styleStoneBlack | black stone color. | String | "black" |
@@ -100,21 +103,20 @@ let reverbiBoard = new ReversiBoard("container-id", config);
     | styleDotColor | Four dots color. | String | "black" |
 
 - id & classname
-    | key | description |type | default value |
+    | Key | Description | Type | Default value |
     | --- | --- | --- | --- |
-    | idReversiBoard | | String | "reversiboard" |
-    | classNameLayer | | String | "reversiboard-layer" |
-    | classNameRow | | String | "reversiboard-row" |
-    | classNameCell | | String | "reversiboard-cell" |
-    | classNameStone | | String | "reversiboard-stone" |
-    | classNameDot | | String | "reversiboard-dot" |
-    | classNameDot | | String | "reversiboard-dot" |
-    | classNameMesh | | String | "reversiboard-mesh"
+    | idReversiBoard | board element id | String | "reversiboard" |
+    | classNameLayer | board layer (board, dot, stone and mesh) class name | String | "reversiboard-layer" |
+    | classNameRow | board row class name | String | "reversiboard-row" |
+    | classNameCell | board cell class name | String | "reversiboard-cell" |
+    | classNameStone | board stone class name | String | "reversiboard-stone" |
+    | classNameDot | board dot class name | String | "reversiboard-dot" |
+    | classNameMesh | board mesh class name | String | "reversiboard-mesh"
 
 - Event function
-    | key | description |type | default value |
+    | Key | Description | Type | Default value |
     | --- | --- | --- | --- |
-    | eventFunc | event function when a cell clicked. event function can receive values i, j, state ( same variables & order, definitely ). i, j is board coordinate, state is board state number.| function | function(i, j, state) { console.log("click (x=" + i + ", y=" + j + ")"); } |
+    | eventFunc | event function when a cell clicked. event function can receive values i, j and state. i, j is board coordinate, state is board state number.| function | function(i, j, state) { console.log("click (x=" + i + ", y=" + j + ")"); } |
 
 
 - Default configration
@@ -151,3 +153,11 @@ let reverbiBoard = new ReversiBoard("container-id", config);
         }
     }
     ```
+
+## Demo
+- Demo site https://mtsalt.github.io/reversi-ui
+- Source code is `index.html` in this repository
+
+## TODO
+- Add other components
+- Add animation
