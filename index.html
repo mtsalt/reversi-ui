@@ -53,7 +53,7 @@
         <div id="reversi-board-container"></div>
         <!------------------------------------->
         
-        <textarea rows="8" placeholder="under construction..."></textarea>
+        <textarea id="next-state" rows="8" placeholder="under construction..."></textarea>
         <button id="update-button">Update</button>
         <button id="reset-button">Reset</button>
         <div class="description">
@@ -70,25 +70,27 @@
         // create ReversiBoard instance
         let o = new ReversiBoard("reversi-board-container");
 
-        document.getElementById("update-button").addEventListener("click", function() {
+        let initInput = "0,0,0,0,0,0,0,0\n".repeat(8);
+        document.getElementById("next-state").value = initInput;
 
-            let state = [
-                [0, 0, 0, 0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 1, 0, 0, 0],
-                [0, 0, 0, 3, 2, 1, 0, 0],
-                [0, 0, 1, 2, 3, 0, 0, 0],
-                [0, 0, 0, 1, 0, 0, 0, 0],
-                [0, 0, 0, 0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 0, 0, 0, 0]
-            ];
-            
+        document.getElementById("update-button").addEventListener("click", function() {
+            let userInput = document.getElementById("next-state").value
+            let userInputNormalized = userInput.replace(" ", "").replace(/\r\n|\r/g, "\n").split("\n");
+            let nextState = [];
+            for (let i=0; i<userInputNormalized.length; i++) {
+                let row = userInputNormalized[i].split(",").map((value) => {
+                    return parseInt(value);
+                })
+                nextState.push(row);
+            }
+
             // update board
-            o.update(state);
+            o.update(nextState);
         });
 
         document.getElementById("reset-button").addEventListener("click", function() {
             // reset board
+            document.getElementById("next-state").value = initInput;
             o.reset();
         });
     
