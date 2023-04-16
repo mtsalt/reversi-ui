@@ -58,15 +58,12 @@ Reversi UI written in JavaScript.
 - ReversiBoard class
     | Name | Description | Argument |
     | --- | --- | --- |
-    | constructor | - | board container id (String), [configurations](#Board-configurations) (Object) |
+    | constructor | - | board container id (String), [configurations](#ReversiBoard-class-configurations) (Object) |
     | update | update board state with array | 8x8 int Array |
     | reset | reset board state (no stones, only empty board) | no argument |
     | resize | resize board (board size follows container element width) | no argument |
 
-## Structure
-- Board
-    Reversi board has layers 
-    
+
 ## Customize
 You can customize reversi UI when creating a ReversiBoard instance.
 
@@ -93,14 +90,14 @@ let reverbiBoard = new ReversiBoard("container-id", config);
 - Style
     | Key | Description | Type | Default value |
     | --- | --- | --- | --- |
-    | styleStoneWhite | white stone color. | String | "white" |
-    | styleStoneBlack | black stone color. | String | "black" |
-    | styleStoneWhiteBorderColor | white stone border color. | String | "white" |
-    | styleStoneBlackBorderColor | black stone border color. | String | "black" |
-    | styleCellEmpty | empty cell color. | String | "green" |
-    | styleCellAvailable | available cell color. | String | "darkgreen" |
-    | styleCellBorderColor | cell border color. | String | "black" |
-    | styleDotColor | Four dots color. | String | "black" |
+    | styleStoneWhite | white stone color | String | "white" |
+    | styleStoneBlack | black stone color | String | "black" |
+    | styleStoneWhiteBorderColor | white stone border color | String | "white" |
+    | styleStoneBlackBorderColor | black stone border color | String | "black" |
+    | styleCellEmpty | empty cell color | String | "green" |
+    | styleCellAvailable | available cell color | String | "darkgreen" |
+    | styleCellBorderColor | cell border color | String | "black" |
+    | styleDotColor | Four dots color | String | "black" |
 
 - id & classname
     | Key | Description | Type | Default value |
