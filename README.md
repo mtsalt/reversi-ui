@@ -30,7 +30,7 @@ Reversi UI written in JavaScript.
 
     ``` JavaScript
     // new ReversiBoard instance
-    let reverbiBoard = new ReversiBoard("container-id");
+    let reversiBoard = new ReversiBoard("container-id");
 
     // update board state
     let state = [
@@ -46,11 +46,11 @@ Reversi UI written in JavaScript.
     reversiBoard.update(state);
 
     // reset board
-    reverbiBoard.reset();
+    reversiBoard.reset();
 
     // set resize event
     window.onresize = function() {
-        reverbiBoard.resize();
+        reversiBoard.resize();
     }
     ```
 
@@ -75,7 +75,7 @@ let config = {
 }
 
 // new ReversiBoard instance
-let reverbiBoard = new ReversiBoard("container-id", config);
+let reversiBoard = new ReversiBoard("container-id", config);
 ```
 
 ### ReversiBoard class configurations
