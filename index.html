@@ -78,7 +78,7 @@
         // add 'update board event'
         document.getElementById("update-button").addEventListener("click", function() {
 
-            // extract board state from textarea string as array
+            // extract board state as array from textarea string 
             let userInput = document.getElementById("next-state").value
             let userInputNormalized = userInput.replace(" ", "").replace(/\r\n|\r/g, "\n").split("\n");
             let nextState = [];
